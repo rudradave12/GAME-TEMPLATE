@@ -1,0 +1,454 @@
+/* ================================================================
+   GAME CARD — defined premium card
+   ----------------------------------------------------------------
+   Steam / Epic backbone: the card is a real object with a border,
+   a layered surface and a structured body. Artwork sits INSIDE the
+   card frame, inset with its own hairline — it never bleeds to the
+   card edge (that would be the Netflix look we're avoiding).
+
+   Anatomy
+     ┌──────────────────────────────┐  ← 1px border + top sheen
+     │ ┌──────────────────────────┐ │  ← inset art, own hairline
+     │ │  16:9 art   [#01] [live] │ │
+     │ │            ▶             │ │  ← hover action
+     │ └──────────────────────────┘ │
+     │  TITLE                       │
+     │  subtitle                    │
+     │  ─────────────────────────   │  ← internal divider
+     │  [genre][players]   PS5 PC ▸ │
+     └──────────────────────────────┘
+   ================================================================ */
+
+.game-card {
+  position: relative;
+  display: flex;
+  height: 100%;
+  min-width: 0;
+  flex-direction: column;
+  padding: var(--s-2);
+  border-radius: var(--r-lg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.013) 100%),
+    var(--surface-1);
+  box-shadow: var(--ring), var(--e-2);
+  transition: transform var(--d-slow) var(--ease-out),
+              box-shadow var(--d-base) var(--ease),
+              background var(--d-base) var(--ease);
+}
+
+/* Machined top edge — reads as a physical layer (ROG) */
+.game-card::before {
+  position: absolute;
+  top: 0;
+  right: 18%;
+  left: 18%;
+  height: 1px;
+  content: "";
+  pointer-events: none;
+  border-radius: var(--r-full);
+  background: linear-gradient(90deg, transparent, var(--sheen), transparent);
+  transition: background var(--d-base) var(--ease);
+}
+
+.game-card:hover,
+.game-card:focus-within {
+  z-index: var(--z-raised);
+  transform: translateY(-5px);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.075) 0%, rgba(255, 255, 255, 0.02) 100%),
+    var(--surface-2);
+  box-shadow: var(--ring-accent), var(--e-4), 0 0 32px rgba(0, 229, 255, 0.13);
+}
+
+.game-card:hover::before,
+.game-card:focus-within::before {
+  right: 8%;
+  left: 8%;
+  background: linear-gradient(90deg, transparent, var(--accent-line), transparent);
+}
+
+/* ════════════════════════════════════════════════
+   MEDIA — inset inside the card frame
+   ════════════════════════════════════════════════ */
+.game-card__media {
+  position: relative;
+  aspect-ratio: 16 / 9;      /* locked — zero layout shift */
+  overflow: hidden;
+  border-radius: calc(var(--r-lg) - var(--s-2));
+  background: var(--surface-sunken);
+  box-shadow: 0 0 0 1px var(--border-subtle);
+}
+
+.game-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--d-lazy) var(--ease-out),
+              filter var(--d-base) var(--ease);
+}
+
+.game-card:hover .game-card__media img,
+.game-card:focus-within .game-card__media img {
+  transform: scale(1.06);
+  filter: brightness(0.72) saturate(1.06);
+}
+
+/* Directional lighting over the art, not a flat wash */
+.game-card__media-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--scrim-top), var(--scrim-bottom);
+  opacity: 0.9;
+  transition: opacity var(--d-base) var(--ease);
+}
+
+.game-card:hover .game-card__media-overlay { opacity: 0.65; }
+
+/* ── Rank + status rail ── */
+.game-card__media-topline {
+  position: absolute;
+  z-index: 2;
+  inset: var(--s-2) var(--s-2) auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+}
+
+.game-card__rank {
+  display: inline-flex;
+  height: 24px;
+  align-items: center;
+  padding: 0 var(--s-2);
+  border-radius: var(--r-sm);
+  color: var(--text-1);
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--track-label);
+  background: rgba(4, 8, 14, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+/* Top three carry the accent */
+.game-card--top .game-card__rank {
+  color: var(--accent);
+  background: rgba(0, 40, 52, 0.78);
+  box-shadow: inset 0 0 0 1px var(--accent-line);
+}
+
+.game-card__status {
+  display: inline-flex;
+  height: 24px;
+  align-items: center;
+  gap: var(--s-2);
+  padding: 0 var(--s-2);
+  border-radius: var(--r-full);
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: rgba(4, 8, 14, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.game-card__status > span {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+  border-radius: var(--r-full);
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.game-card__status--available   { color: var(--success); }
+.game-card__status--upcoming    { color: var(--warning); }
+.game-card__status--unavailable { color: var(--danger);  }
+
+/* ── 18+ ── */
+.game-card__age {
+  position: absolute;
+  z-index: 2;
+  right: var(--s-2);
+  bottom: var(--s-2);
+  display: inline-flex;
+  height: 22px;
+  align-items: center;
+  padding: 0 var(--s-2);
+  border-radius: var(--r-xs);
+  color: #ffb4b4;
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-black);
+  background: rgba(70, 10, 18, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 1px rgba(255, 90, 110, 0.34);
+}
+
+/* ── Play affordance ── */
+.game-card__media-play {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  padding-left: 3px;
+  border: 0;
+  border-radius: var(--r-full);
+  color: var(--accent-ink);
+  font-size: 0.9rem;
+  opacity: 0;
+  place-items: center;
+  background: #fff;
+  box-shadow: var(--e-3);
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: opacity var(--d-base) var(--ease),
+              transform var(--d-slow) var(--ease-spring);
+}
+
+.game-card:hover .game-card__media-play,
+.game-card__media-play:focus-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.game-card__media-play:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.game-card__media-play:active {
+  transform: translate(-50%, -50%) scale(0.93);
+}
+
+/* ════════════════════════════════════════════════
+   BODY
+   ════════════════════════════════════════════════ */
+.game-card__body {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  padding: var(--s-3) var(--s-2) var(--s-2);
+}
+
+.game-card__copy { min-height: 50px; }
+
+.game-card__title {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  color: var(--text-1);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--track-title);
+  line-height: var(--lh-heading);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  transition: color var(--d-fast) var(--ease);
+}
+
+.game-card:hover .game-card__title { color: var(--accent); }
+
+.game-card__subtitle {
+  display: -webkit-box;
+  margin: var(--s-1) 0 0;
+  overflow: hidden;
+  color: var(--text-4);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+/* ── Chips ── */
+.game-card__chips {
+  display: flex;
+  gap: var(--s-1);
+  flex-wrap: wrap;
+  min-height: 26px;
+  margin-top: var(--s-3);
+}
+
+.game-card__chips span {
+  display: inline-flex;
+  height: 22px;
+  min-width: 0;
+  max-width: 100%;
+  align-items: center;
+  padding: 0 var(--s-2);
+  overflow: hidden;
+  border-radius: var(--r-xs);
+  color: var(--text-4);
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--track-label);
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px var(--border-subtle);
+}
+
+.game-card__chips span:first-child {
+  color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: inset 0 0 0 1px var(--accent-line);
+}
+
+/* ── Footer, split by an internal divider ── */
+.game-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+  margin-top: auto;
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.game-card__platforms {
+  display: flex;
+  min-width: 0;
+  gap: var(--s-2);
+  flex-wrap: wrap;
+}
+
+.game-card__platforms span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  color: var(--text-4);
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-semibold);
+  white-space: nowrap;
+  transition: color var(--d-fast) var(--ease);
+}
+
+.game-card:hover .game-card__platforms span { color: var(--text-3); }
+
+.game-card__platforms svg {
+  color: var(--accent);
+  font-size: 0.72rem;
+  opacity: 0.75;
+}
+
+/* ── Trailer button ── */
+.game-card__trailer {
+  display: inline-flex;
+  height: 30px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  padding: 0 var(--s-3);
+  border: 0;
+  border-radius: var(--r-sm);
+  color: var(--text-2);
+  font-family: var(--font-primary);
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--track-label);
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: inset 0 0 0 1px var(--border);
+  transition: color var(--d-fast) var(--ease),
+              background var(--d-fast) var(--ease),
+              box-shadow var(--d-fast) var(--ease),
+              transform var(--d-fast) var(--ease);
+}
+
+.game-card__trailer svg { font-size: 0.55rem; }
+
+.game-card__trailer:hover:not(:disabled),
+.game-card__trailer:focus-visible:not(:disabled) {
+  color: var(--accent-ink);
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  box-shadow: 0 4px 14px rgba(0, 229, 255, 0.26);
+}
+
+.game-card__trailer:active:not(:disabled) { transform: translateY(1px); }
+
+.game-card__trailer:disabled {
+  cursor: not-allowed;
+  color: var(--text-5);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--border-subtle);
+}
+
+/* ── Status variants: left edge marker on the card ── */
+.game-card.status-upcoming    { box-shadow: var(--ring), var(--e-2), inset 3px 0 0 -1px var(--warning); }
+.game-card.status-unavailable { box-shadow: var(--ring), var(--e-2), inset 3px 0 0 -1px var(--danger);  }
+.game-card.status-unavailable .game-card__media img { filter: grayscale(0.5) brightness(0.76); }
+
+/* ════════════════════════════════════════════════
+   TOUCH — no hover, so the action is always present
+   ════════════════════════════════════════════════ */
+@media (hover: none) {
+  .game-card__media-play { opacity: 0.92; transform: translate(-50%, -50%) scale(0.9); }
+  .game-card:hover { transform: none; }
+  .game-card:hover .game-card__media img { transform: none; filter: none; }
+  .game-card:hover .game-card__title { color: var(--text-1); }
+}
+
+/* ════════════════════════════════════════════════
+   SMALL SCREENS
+   ════════════════════════════════════════════════ */
+@media (max-width: 679px) {
+  .game-card { padding: var(--s-1); border-radius: var(--r-md); }
+  .game-card__media { border-radius: calc(var(--r-md) - var(--s-1)); }
+  .game-card__body  { padding: var(--s-3) var(--s-2) var(--s-1); }
+  .game-card__copy  { min-height: 44px; }
+
+  .game-card__title    { font-size: var(--fs-sm); }
+  .game-card__subtitle { font-size: var(--fs-xs); }
+
+  .game-card__chips { gap: var(--s-1); margin-top: var(--s-2); }
+  .game-card__chips span { height: 20px; padding: 0 var(--s-2); font-size: 0.56rem; }
+
+  .game-card__footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--s-2);
+    padding-top: var(--s-2);
+  }
+
+  .game-card__platforms { justify-content: center; }
+  .game-card__trailer   { width: 100%; height: 32px; }
+
+  .game-card__media-play { width: 42px; height: 42px; }
+}
+
+@media (max-width: 370px) {
+  .game-card__media-topline { inset: var(--s-1) var(--s-1) auto; }
+  .game-card__rank,
+  .game-card__status { height: 20px; padding: 0 var(--s-1); font-size: 0.54rem; }
+  .game-card__status > span { width: 5px; height: 5px; }
+  .game-card__age { right: var(--s-1); bottom: var(--s-1); }
+}
+
+/* ════════════════════════════════════════════════
+   REDUCED MOTION
+   ════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .game-card,
+  .game-card::before,
+  .game-card__media img,
+  .game-card__media-overlay,
+  .game-card__media-play,
+  .game-card__title,
+  .game-card__trailer,
+  .game-card__platforms span {
+    transition: none;
+  }
+  .game-card:hover { transform: none; }
+  .game-card:hover .game-card__media img { transform: none; }
+}

@@ -1,0 +1,48 @@
+﻿COMMERCIAL TEMPLATE LICENSE AGREEMENT
+=====================================
+
+Product: GameZone Website Template
+Copyright (c) 2026 GameZone Template Authors. All rights reserved.
+
+IMPORTANT: PLEASE READ THIS LICENSE AGREEMENT CAREFULLY BEFORE USING,
+MODIFYING, OR DEPLOYING THIS SOFTWARE TEMPLATE.
+
+1. GRANT OF LICENSE
+-------------------
+Subject to the terms and conditions of this Agreement, the purchaser ("Licensee")
+is granted a non-exclusive, non-transferable, commercial license to:
+  a) Use, customize, adapt, and deploy the template to create production websites,
+     client websites, and web applications for personal or commercial business use.
+  b) Modify and adapt the source code, design assets, and configurations to match
+     brand and project requirements.
+  c) Create an unlimited number of final client websites or business sites using
+     this template under an extended or commercial purchase tier.
+
+2. RESTRICTIONS
+----------------
+Licensee SHALL NOT:
+  a) Resell, redistribute, license, sublicense, rent, lease, lend, share, or upload
+     the original template source code, modified versions of the template source code,
+     or derivative template products to any marketplace, code repository, asset store,
+     theme directory, or public forum as a template, theme, starter kit, or digital asset.
+  b) Make the uncompiled or raw source code publicly accessible in open repositories
+     where third parties can download or duplicate the template free of charge.
+  c) Claim original authorship, copyright, or design trademark of the underlying
+     template design system.
+
+3. THIRD-PARTY ASSETS AND OPEN SOURCE
+-------------------------------------
+This template utilizes third-party open-source libraries (including React, Remix,
+Vite, and React Icons) and web fonts, which remain the property of their respective
+owners and are governed by their respective open-source licenses (MIT, Apache 2.0,
+OFL, etc.). Nothing in this Agreement restricts or overrides the terms of any
+applicable third-party open-source license.
+
+4. DISCLAIMER OF WARRANTIES
+---------------------------
+THE TEMPLATE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN
+CONNECTION WITH THE TEMPLATE OR THE USE OR OTHER DEALINGS IN THE TEMPLATE.

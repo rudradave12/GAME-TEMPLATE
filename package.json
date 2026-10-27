@@ -1,0 +1,39 @@
+{
+  "name": "gamezone-website-template",
+  "version": "1.0.0",
+  "description": "Modern responsive gaming zone website template for gaming cafes, esports centers and gaming lounges.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "remix vite:dev",
+    "build": "remix vite:build && node scripts/write-csp-hashes.mjs",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "gaming-zone",
+    "gaming-cafe",
+    "esports-arena",
+    "gaming-lounge",
+    "remix",
+    "vite",
+    "website-template"
+  ],
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "dependencies": {
+    "@fontsource-variable/outfit": "^5.3.0",
+    "isbot": "^5.1.31",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.5.0"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "2.17.5",
+    "@types/react": "^19.2.13",
+    "@types/react-dom": "^19.2.3",
+    "vite": "^5.4.0",
+    "vite-tsconfig-paths": "^6.0.5"
+  },
+  "overrides": {
+    "tar": "^7.5.22"
+  }
+}

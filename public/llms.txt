@@ -1,0 +1,12 @@
+# GameZone Arena
+
+> GameZone Arena is a modern gaming lounge, esports center, and console arena template featuring PlayStation 5, Xbox Series X, and high-end PC gaming stations.
+
+## Important Pages
+
+- [Home](https://gamezone-arena.pages.dev/): Venue overview, featured games, cafe menu, FAQs, and booking info.
+- [Game Library](https://gamezone-arena.pages.dev/games): Browse games, availability, platforms, and interactive trailers.
+- [Rates](https://gamezone-arena.pages.dev/#pricing): Hourly gaming rates, screen choices, and party passes.
+- [Cafe & Snacks](https://gamezone-arena.pages.dev/#cafe): Gourmet gaming snacks, pizza, cold brews, and energy drinks.
+- [Visit & Booking](https://gamezone-arena.pages.dev/#booking): Location, hours, directions, and reservation options.
+- [Guidelines](https://gamezone-arena.pages.dev/guidelines): Safety policies, equipment care, and community rules.

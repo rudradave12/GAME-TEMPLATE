@@ -1,0 +1,19 @@
+{
+  "specVersion": "1.0",
+  "entries": [
+    {
+      "@context": "https://agenticresourcediscovery.org/context/v1",
+      "identifier": "urn:gamezone-arena:catalog:game-library",
+      "displayName": "GameZone Arena Game Library Catalog",
+      "type": "application/ai-catalog+json",
+      "url": "https://gamezone-arena.pages.dev/.well-known/ard.json",
+      "description": "A public catalog describing the GameZone Arena game library, station availability, platforms, and visitor information.",
+      "representativeQueries": [
+        "Which games can I play at GameZone Arena?",
+        "Is a particular game available at GameZone Arena?",
+        "What platforms and consoles are available at GameZone Arena?"
+      ],
+      "tags": ["gaming", "esports", "game library", "PS5", "PC", "Xbox"]
+    }
+  ]
+}

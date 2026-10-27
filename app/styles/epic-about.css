@@ -1,0 +1,401 @@
+/* ================================================================
+   EPIC ABOUT — All devices responsive
+   ✅ Portrait mobile: 4 stat boxes in 1 ROW (not 2x2)
+   ✅ Text auto-adjusts to all screen sizes
+   ✅ Desktop ≥ 769px: content stretches full screen width,
+      no blank left/right gaps, safe padding only
+   ================================================================ */
+
+:root {
+  --epic-black: var(--bg);
+  --epic-white: #ffffff;
+  --epic-grey:  var(--surface-2);
+}
+
+.epic-wrapper {
+  background: var(--epic-black);
+  color: var(--epic-white);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ── Default container (mobile base) ── */
+.epic-container {
+  /* No max-width — content fills screen with safe padding only */
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: clamp(48px, 8vw, 100px) clamp(16px, 5vw, 80px);
+  box-sizing: border-box;
+}
+
+/* ── Typography ── */
+.epic-subhead {
+  font-size: clamp(0.6rem, 1.5vw, 0.75rem);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  display: block;
+  word-break: break-word;
+  white-space: normal;
+  overflow: visible;
+}
+
+.epic-headline {
+  font-size: clamp(1.8rem, 6vw, 8rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  margin: 20px 0 24px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ✅ Body text: full width, no 900px max-width cap */
+.epic-body {
+  font-size: clamp(0.82rem, 1.4vw, 1rem);
+  line-height: 1.82;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 100%;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.epic-body p {
+  margin-bottom: 18px;
+}
+
+.highlight        { color: #ffffff; font-weight: 600; }
+.highlight-accent { color: rgba(255, 255, 255, 0.85); font-weight: 700; }
+.highlight-strong { color: #ffffff; font-weight: 800; }
+
+/* ✅ Food note: full width, no cap */
+.food-line {
+  margin-top: 20px;
+  font-size: clamp(0.78rem, 1.3vw, 0.875rem);
+  color: #bdbdbd;
+  border-left: 2px solid rgba(255, 255, 255, 0.08);
+  padding-left: 14px;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.epic-divider {
+  height: 1px;
+  background: var(--epic-grey);
+  margin: clamp(24px, 5vw, 64px) 0;
+}
+
+/* ════════════════════════════════════════════════
+   STAT GRID — always 4 columns on all sizes
+════════════════════════════════════════════════ */
+.epic-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--epic-grey);
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+}
+
+.epic-stat-box {
+  position: relative;
+  background: var(--epic-black);
+  padding: clamp(14px, 2.5vw, 40px);
+  min-height: clamp(80px, 14vw, 240px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--d-base) ease, box-shadow var(--d-base) ease;
+  overflow: hidden;
+}
+
+.epic-stat-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    520px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255,255,255,0.08),
+    transparent 42%
+  );
+  opacity: 0;
+  transition: opacity var(--d-base);
+  pointer-events: none;
+}
+
+@media (min-width: 900px) {
+  .epic-stat-box:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 32px 64px rgba(0,0,0,0.7);
+  }
+  .epic-stat-box:hover::before { opacity: 1; }
+}
+
+/* ── Number ── */
+.stat-number {
+  font-size: clamp(1.1rem, 3.5vw, 4rem);
+  font-weight: 900;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.0;
+}
+
+/* ── Label ── */
+.stat-label {
+  font-size: clamp(0.5rem, 0.95vw, 0.75rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.3;
+  margin-top: 4px;
+}
+
+/* ── Reveal animations ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ════════════════════════════════════════════════
+   MOBILE ≤ 480px — unchanged from original
+════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .epic-container {
+    padding: 40px 12px;
+  }
+
+  .epic-headline {
+    font-size: clamp(1.6rem, 8vw, 3.2rem);
+    margin: 16px 0 18px;
+  }
+
+  .epic-body {
+    font-size: clamp(0.78rem, 3.5vw, 0.9rem);
+  }
+
+  .stat-number {
+    font-size: clamp(0.95rem, 3vw, 1.8rem);
+  }
+
+  .stat-label {
+    font-size: clamp(0.42rem, 1.8vw, 0.6rem);
+    letter-spacing: 0.1em;
+  }
+
+  .epic-stat-box {
+    padding: 12px 8px;
+    min-height: 64px;
+  }
+}
+
+/* ── Landscape phone — unchanged from original ── */
+@media (orientation: landscape) and (max-height: 500px) {
+  .epic-container {
+    padding: 32px 20px;
+  }
+
+  .epic-headline {
+    font-size: clamp(1.6rem, 5vw, 3rem);
+  }
+
+  .stat-number { font-size: clamp(1.2rem, 3vw, 2.5rem); }
+  .stat-label  { font-size: clamp(0.5rem, 1vw, 0.65rem); }
+  .epic-stat-box { min-height: 70px; padding: 12px; }
+}
+
+/* ════════════════════════════════════════════════
+   ✅ DESKTOP ≥ 769px — STRETCH TO FILL SCREEN
+   Only text content affected (body, food-line, subhead, headline)
+   Stat grid/boxes are NOT changed — they already fill 100%
+   NO changes to mobile breakpoints above
+════════════════════════════════════════════════ */
+@media (min-width: 769px) {
+  .epic-container {
+    /* Safe horizontal padding — fills viewport, no blank sides */
+    padding-top:    clamp(48px, 6vw, 100px);
+    padding-bottom: clamp(48px, 6vw, 100px);
+    padding-left:   clamp(32px, 5vw, 90px);
+    padding-right:  clamp(32px, 5vw, 90px);
+  }
+
+  /* Body text spans full container width */
+  .epic-body {
+    max-width: 100%;
+    font-size: clamp(0.86rem, 1.3vw, 1.02rem);
+    line-height: 1.84;
+  }
+
+  /* Food note spans full container width */
+  .food-line {
+    max-width: 100%;
+    font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+  }
+
+  /* Subhead: full width, normal wrap */
+  .epic-subhead {
+    white-space: normal;
+    overflow: visible;
+    font-size: clamp(0.62rem, 1.1vw, 0.76rem);
+    letter-spacing: 0.32em;
+  }
+
+  /* Headline: scale with viewport */
+  .epic-headline {
+    font-size: clamp(2.5rem, 5.5vw, 8rem);
+  }
+}
+
+/* ════ Wide displays 1440px – 1920px ════ */
+@media (min-width: 1440px) {
+  .epic-container {
+    padding-left:  clamp(56px, 6vw, 120px);
+    padding-right: clamp(56px, 6vw, 120px);
+  }
+
+  .epic-body     { font-size: clamp(0.9rem, 1.1vw, 1.08rem); }
+  .food-line     { font-size: clamp(0.84rem, 1.05vw, 1rem); }
+  .epic-headline { font-size: clamp(3rem, 5vw, 8rem); }
+}
+
+/* ════ Ultra-wide 2560px+ ════ */
+@media (min-width: 2560px) {
+  .epic-container {
+    padding-left:  180px;
+    padding-right: 180px;
+  }
+
+  .epic-body  { font-size: 1.15rem; line-height: 1.9; }
+  .food-line  { font-size: 1.05rem; }
+  .epic-headline { font-size: clamp(4rem, 4vw, 8rem); }
+}
+
+
+/* ▓▓ RD DESIGN SYSTEM LAYER ▓▓
+   Markup unchanged — same paragraphs, divider and stat grid. This
+   layer fixes the measure (body copy was running ~150 chars per line
+   on desktop, well past the 60–75 readable range) and moves the stat
+   boxes onto the shared card language. */
+.epic-container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: var(--pad-y) var(--pad-x);
+}
+
+.epic-subhead {
+  display: flex; align-items: center; gap: var(--s-3);
+  color: var(--accent); font-size: var(--fs-xs);
+  font-weight: var(--fw-bold); letter-spacing: var(--track-eyebrow);
+}
+.epic-subhead::before {
+  width: 26px; height: 1.5px; content: ""; flex: 0 0 auto;
+  border-radius: var(--r-full);
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.epic-headline {
+  margin: var(--s-4) 0 var(--s-6);
+  color: var(--text-1);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-black);
+  letter-spacing: var(--track-display);
+  line-height: var(--lh-tight);
+}
+
+.epic-body {
+  max-width: var(--measure-wide);   /* was 100% — lines ran too long */
+  color: var(--text-3);
+  font-size: var(--fs-md);
+  line-height: var(--lh-body);
+}
+.epic-body p { margin-bottom: var(--s-4); }
+
+.highlight        { color: var(--text-1); font-weight: var(--fw-semibold); }
+.highlight-accent { color: var(--text-1); font-weight: var(--fw-bold); }
+.highlight-strong { color: var(--text-1); font-weight: var(--fw-black); }
+
+.food-line {
+  max-width: var(--measure-wide);
+  padding: var(--s-4) var(--s-5);
+  margin-top: var(--s-6);
+  border-left: 2px solid var(--warning);
+  border-radius: var(--r-md);
+  color: var(--text-3);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  background: var(--warning-soft);
+}
+
+.epic-divider {
+  height: 1px;
+  margin: var(--s-12) 0;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* ── Stat grid: separate defined cards, not hairline cells ── */
+.epic-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap-grid);
+  background: transparent;
+}
+
+.epic-stat-box {
+  padding: var(--s-6);
+  min-height: 0;
+  border-radius: var(--r-lg);
+  background: linear-gradient(180deg, rgba(255,255,255,.05) 0%, rgba(255,255,255,.013) 100%), var(--surface-1);
+  box-shadow: var(--ring), var(--e-2);
+  transition: transform var(--d-slow) var(--ease-out), box-shadow var(--d-base) var(--ease);
+}
+
+.epic-stat-box::before {
+  background: radial-gradient(420px circle at var(--mx,50%) var(--my,50%), rgba(0,229,255,.1), transparent 45%);
+}
+
+@media (min-width: 900px) {
+  .epic-stat-box:hover {
+    transform: translateY(-5px) scale(1);
+    box-shadow: var(--ring-accent), var(--e-4);
+  }
+}
+
+.stat-number {
+  color: var(--text-1);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-black);
+  letter-spacing: var(--track-display);
+  line-height: 1;
+}
+
+.stat-label {
+  margin-top: var(--s-2);
+  color: var(--text-4);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--track-eyebrow);
+}
+
+@media (max-width: 700px) {
+  .epic-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--s-3); }
+  .epic-stat-box { padding: var(--s-4); }
+  .stat-number { font-size: var(--fs-xl); }
+}
+
+@media (max-width: 480px) {
+  .epic-container { padding: var(--s-12) var(--s-4); }
+  .epic-body { font-size: var(--fs-base); }
+  .stat-label { font-size: 0.62rem; letter-spacing: .12em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .epic-stat-box { transition: none; }
+  .epic-stat-box:hover { transform: none; }
+}

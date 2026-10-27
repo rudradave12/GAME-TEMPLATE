@@ -1,0 +1,18 @@
+{
+  "name": "GameZone Arena",
+  "short_name": "GameZone",
+  "description": "Modern gaming zone and esports arena template with consoles, PC battle stations, and game library",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#071321",
+  "theme_color": "#0066bd",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/icons/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

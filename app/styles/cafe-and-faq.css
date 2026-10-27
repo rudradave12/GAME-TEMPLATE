@@ -1,0 +1,230 @@
+/* ==============================================================================
+   GAMEZONE ARENA — CAFE MENU & FAQ STYLES
+   Seamlessly integrated with the design system tokens and light/dark theme modes.
+   ============================================================================== */
+
+/* ── Container Layouts ── */
+.cafe-section,
+.faq-section {
+  max-width: var(--site-width);
+  padding-inline: var(--page-x);
+  margin-inline: auto;
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+}
+
+.cafe-section .ps-section-heading,
+.faq-section .ps-section-heading {
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+/* ── Cafe Filter Chips ── */
+.cafe-section__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+/* ── Cafe Grid ── */
+.cafe-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 24px);
+}
+
+.cafe-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-xs);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.cafe-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.cafe-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.cafe-card__category {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.cafe-card__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.55rem;
+  background: var(--surface-blue);
+  color: var(--blue);
+  font-size: 0.68rem;
+  font-weight: 800;
+  border-radius: var(--r-full);
+}
+
+.cafe-card__body {
+  flex-grow: 1;
+}
+
+.cafe-card__name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--ink-strong);
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+}
+
+.cafe-card__desc {
+  font-size: 0.86rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+
+.cafe-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+
+.cafe-card__price {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--ink-strong);
+  letter-spacing: -0.02em;
+}
+
+.cafe-card__station-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* ── FAQ Container & Accordion ── */
+.faq-section__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+.faq-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-xs);
+  overflow: hidden;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.faq-card--open {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.faq-card h3 {
+  margin: 0;
+}
+
+.faq-card__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 1.25rem 1.4rem;
+  background: none;
+  border: none;
+  color: var(--ink-strong);
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-align: left;
+  line-height: 1.35;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.faq-card__trigger:hover {
+  color: var(--blue);
+}
+
+.faq-card__chevron {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--blue);
+  transition: transform var(--transition);
+}
+
+.faq-card--open .faq-card__chevron {
+  transform: rotate(180deg);
+}
+
+.faq-card__content {
+  padding: 0 1.4rem 1.35rem 1.4rem;
+  color: var(--text);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.faq-card__content p {
+  margin: 0;
+}
+
+/* ── Responsive Adaptations ── */
+@media (max-width: 980px) {
+  .cafe-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .cafe-section,
+  .faq-section {
+    padding-inline: 1rem;
+  }
+
+  .cafe-section__grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .cafe-card {
+    padding: 1.15rem;
+  }
+
+  .faq-card__trigger {
+    padding: 1.05rem 1.15rem;
+    font-size: 0.96rem;
+  }
+
+  .faq-card__content {
+    padding: 0 1.15rem 1.15rem 1.15rem;
+    font-size: 0.88rem;
+  }
+}

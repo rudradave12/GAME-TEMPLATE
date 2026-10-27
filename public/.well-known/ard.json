@@ -1,0 +1,18 @@
+{
+  "entries": [
+    {
+      "@context": "https://agenticresourcediscovery.org/context/v1",
+      "identifier": "urn:gamezone-arena:web:game-library",
+      "displayName": "GameZone Arena Game Library",
+      "type": "text/html",
+      "url": "https://gamezone-arena.pages.dev/games",
+      "description": "The GameZone Arena game library lists titles, availability, genres, platforms, and interactive trailers for our gaming venue.",
+      "representativeQueries": [
+        "Which games can I play at GameZone Arena?",
+        "Is a particular game available at GameZone Arena?",
+        "What platforms and consoles are available at GameZone Arena?"
+      ],
+      "tags": ["gaming", "esports", "game library", "PS5", "PC", "Xbox"]
+    }
+  ]
+}
