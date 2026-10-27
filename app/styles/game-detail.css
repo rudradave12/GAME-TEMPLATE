@@ -91,10 +91,12 @@
 .game-screenshots__thumb:hover { opacity: 1; transform: translateY(-2px); }
 .game-screenshots__thumb.is-selected { border-color: var(--blue); opacity: 1; }
 .game-screenshots__thumb:focus-visible { outline: 3px solid color-mix(in srgb, var(--blue) 38%, transparent); outline-offset: 3px; opacity: 1; }
-.game-detail-not-found { display: grid; min-height: 70vh; place-content: center; justify-items: start; gap: .7rem; padding: 6rem var(--page-x); color: var(--ink); }
-.game-detail-not-found p { margin: 0; color: var(--blue); font-size: .72rem; font-weight: 800; letter-spacing: .12em; }
-.game-detail-not-found h1 { margin: 0; color: var(--ink-strong); font-size: clamp(2rem, 5vw, 3rem); }
-.game-detail-not-found a { color: var(--blue); font-weight: 700; }
+.game-detail-not-found { display: grid; min-height: 70vh; place-content: center; justify-items: start; gap: 1rem; padding: clamp(4rem, 10vw, 7rem) var(--page-x); color: var(--ink); }
+.game-detail-not-found__content { display: grid; gap: .8rem; max-width: 640px; }
+.game-detail-not-found__kicker { margin: 0; color: var(--blue); font-size: .75rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+.game-detail-not-found h1 { margin: 0; color: var(--ink-strong); font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; letter-spacing: -.04em; line-height: 1.05; }
+.game-detail-not-found__desc { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.55; }
+.game-detail-not-found__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .5rem; }
 html[data-theme="dark"] .game-detail__primary { color: #061321; background: #67c3ff; }
 @media (max-width: 900px) {
   .game-detail-hero { min-height: min(76svh, 700px); }

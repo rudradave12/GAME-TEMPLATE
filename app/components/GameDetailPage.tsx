@@ -314,10 +314,44 @@ function GameTrailer({ game }: Props) {
 }
 
 function getRelevantGuidelines(game: Game) {
-  const find = (title: string) => guidelines.find((guideline) => guideline.title === title)!;
-  const relevant = [find("Age & entry"), find("Zero tolerance"), find("Time & session")];
-  if (game.adult) relevant.push(find("Content guidelines"));
-  return relevant;
+  if (!Array.isArray(guidelines) || guidelines.length === 0) return [];
+
+  // Match guidelines flexibly by keyword in title or subtitle
+  const findMatch = (...keywords: string[]) =>
+    guidelines.find((g) =>
+      keywords.some((kw) => {
+        const lowerKw = kw.toLowerCase();
+        return (
+          g.title.toLowerCase().includes(lowerKw) ||
+          g.subtitle.toLowerCase().includes(lowerKw)
+        );
+      })
+    );
+
+  const ageRule = findMatch("age & entry", "age", "entry") ?? guidelines[0];
+  const conductRule = findMatch("zero tolerance", "tolerance", "respect", "fair") ?? guidelines[1];
+  const timingRule = findMatch("session timing", "timing", "session", "clock", "time") ?? guidelines[6] ?? guidelines[2];
+  const matureRule = findMatch("age ratings & content", "ratings", "content", "mature") ?? guidelines[5];
+
+  const picked = [ageRule, conductRule, timingRule];
+  if (game.adult && matureRule && !picked.includes(matureRule)) {
+    picked.push(matureRule);
+  }
+
+  // Deduplicate and filter out any undefined/null values
+  const valid = picked.filter((rule): rule is typeof guidelines[number] => Boolean(rule && rule.icon));
+
+  // If fewer than 3 rules matched, backfill from available guidelines
+  if (valid.length < 3) {
+    for (const g of guidelines) {
+      if (g?.icon && !valid.includes(g)) {
+        valid.push(g);
+        if (valid.length >= 3) break;
+      }
+    }
+  }
+
+  return valid;
 }
 
 function GamePolicy({ game }: Props) {
@@ -331,13 +365,16 @@ function GamePolicy({ game }: Props) {
         <a href="/guidelines">Read all guidelines <FiArrowUpRight aria-hidden="true" /></a>
       </header>
       <div className="game-policy__grid">
-        {relevant.map((rule) => {
+        {relevant.map((rule, idx) => {
+          if (!rule || !rule.icon) return null;
           const Icon = rule.icon;
           return (
-            <article key={rule.title}>
+            <article key={rule.title || `rule-${idx}`}>
               <Icon aria-hidden="true" />
               <div><h3>{rule.title}</h3><p>{rule.subtitle}</p></div>
-              <ul>{rule.points.slice(0, game.adult ? 3 : 2).map((point) => <li key={point}>{point}</li>)}</ul>
+              {Array.isArray(rule.points) && rule.points.length > 0 && (
+                <ul>{rule.points.slice(0, game.adult ? 3 : 2).map((point) => <li key={point}>{point}</li>)}</ul>
+              )}
             </article>
           );
         })}
