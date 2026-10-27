@@ -10,6 +10,7 @@ import { gtaOnlinePolicyText } from "./GTAOnlinePolicy";
 import { GameAbout, GameSpotlight } from "./GameDetailExperience";
 import { getResponsiveArtwork } from "../data/game-artwork";
 import { siteConfig } from "~/config/siteConfig";
+import { extractYouTubeVideoId, getYouTubeEmbedUrl, getYouTubeWatchUrl } from "~/utils/youtube";
 
 type Props = { game: Game };
 
@@ -229,7 +230,14 @@ function GameTrailer({ game }: Props) {
   if (!game.video) return <p className="game-detail__no-trailer">A trailer is not available for this title yet.</p>;
 
   if (game.video.type === "youtube") {
+    const rawInput = game.video.id ?? (game.video as { url?: string }).url;
+    const videoId = extractYouTubeVideoId(rawInput);
+    if (!videoId) return <p className="game-detail__no-trailer">A trailer is not available for this title yet.</p>;
+
     const origin = typeof window === "undefined" ? siteConfig.brand.websiteUrl : window.location.origin;
+    const embedUrl = getYouTubeEmbedUrl(rawInput, origin);
+    const watchUrl = getYouTubeWatchUrl(rawInput);
+
     return (
       <>
         <button type="button" className="game-detail__primary game-detail__watch" onClick={startTrailer} aria-label={`Watch trailer for ${game.title} in fullscreen`}>
@@ -241,16 +249,21 @@ function GameTrailer({ game }: Props) {
           onPointerMove={revealControls}
           onTouchStart={revealControls}
         >
-          {started && <>
+          {started && embedUrl && <>
             <iframe
               ref={frameRef}
-              src={`https://www.youtube-nocookie.com/embed/${game.video.id}?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&enablejsapi=1&origin=${encodeURIComponent(origin)}`}
+              src={embedUrl}
               title={`${game.title} trailer`}
               allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
               allowFullScreen
-              sandbox="allow-scripts allow-same-origin allow-presentation"
+              sandbox="allow-scripts allow-same-origin allow-presentation allow-popups allow-popups-to-escape-sandbox"
             />
-            <div className="game-trailer__link-guard" aria-hidden="true" />
+            <div
+              className="game-trailer__link-guard"
+              aria-hidden="true"
+              onClick={togglePlayback}
+              style={{ cursor: "pointer" }}
+            />
             <div className="game-trailer__hud" onPointerEnter={revealControls}>
               <div className="game-trailer__hud-top">
                 <span>{game.title}</span>
@@ -263,6 +276,23 @@ function GameTrailer({ game }: Props) {
                 <button type="button" onClick={toggleMute} aria-label={muted ? "Unmute trailer" : "Mute trailer"}>
                   {muted ? <FiVolumeX aria-hidden="true" /> : <FiVolume2 aria-hidden="true" />}
                 </button>
+                {watchUrl && (
+                  <a
+                    href={watchUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="game-trailer__hud-watch-external"
+                    title="Watch on YouTube (opens in new tab)"
+                    aria-label={`Watch ${game.title} trailer on YouTube in a new tab`}
+                    onClick={() => {
+                      sendPlayerCommand("pauseVideo");
+                      setPlaying(false);
+                    }}
+                  >
+                    <FiArrowUpRight aria-hidden="true" />
+                    <span>Watch on YouTube</span>
+                  </a>
+                )}
                 <span className="game-trailer__hud-label">Official trailer</span>
               </div>
             </div>
@@ -444,6 +474,9 @@ export default function GameDetailPage({ game }: Props) {
   const isForzaDefaultArtwork = game.id === 45 && selectedArtwork === game.image;
   const isDefaultArtwork = selectedArtwork === game.image;
   const responsiveArtwork = getResponsiveArtwork(game.image);
+  const youtubeWatchUrl = game.video?.type === "youtube"
+    ? getYouTubeWatchUrl(game.video.id ?? (game.video as { url?: string }).url)
+    : null;
 
   useEffect(() => setSelectedArtwork(game.image), [game.id, game.image]);
 
@@ -517,6 +550,18 @@ export default function GameDetailPage({ game }: Props) {
             </div>
             <div className="game-detail__actions">
               <GameTrailer game={game} />
+              {youtubeWatchUrl && (
+                <a
+                  href={youtubeWatchUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="game-detail__secondary"
+                  aria-label={`Watch ${game.title} trailer on YouTube in a new tab`}
+                  title="Watch on YouTube (opens in new tab)"
+                >
+                  <FiArrowUpRight aria-hidden="true" /> Watch on YouTube
+                </a>
+              )}
             </div>
           </div>
         </section>

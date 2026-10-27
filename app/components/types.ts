@@ -1,7 +1,8 @@
 export type VideoSource =
   | {
       type: "youtube";
-      id: string; // YouTube video ID only
+      id?: string; // YouTube video ID or full YouTube URL
+      url?: string; // Optional direct YouTube URL
     }
   | {
       type: "mp4" | "webm";

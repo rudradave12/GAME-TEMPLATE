@@ -44,6 +44,9 @@
 .game-trailer__hud button { display: grid; flex: 0 0 auto; width: 44px; height: 44px; place-items: center; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; color: #fff; background: rgba(5,14,28,.72); cursor: pointer; backdrop-filter: blur(12px); transition: background 160ms ease, transform 160ms ease; }
 .game-trailer__hud button:hover { background: rgba(0,92,190,.95); transform: scale(1.04); }
 .game-trailer__hud button svg { width: 1.15rem; height: 1.15rem; }
+.game-trailer__hud-watch-external { display: inline-flex; align-items: center; gap: .45rem; padding: .45rem .8rem; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; color: #fff; background: rgba(5,14,28,.72); font-size: .8rem; font-weight: 550; text-decoration: none; backdrop-filter: blur(12px); transition: background 160ms ease, transform 160ms ease; }
+.game-trailer__hud-watch-external:hover { background: rgba(0,92,190,.95); transform: scale(1.03); }
+.game-trailer__hud-watch-external svg { width: .95rem; height: .95rem; color: #5fc8ff; }
 .game-trailer__hud-label { margin-left: auto; color: rgba(255,255,255,.78); font-size: .78rem; font-weight: 450; }
 .game-trailer__close { width: 46px !important; height: 46px !important; }
 .game-trailer--controls-hidden { cursor: none; }

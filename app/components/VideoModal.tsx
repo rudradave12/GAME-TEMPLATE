@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 import { FaDesktop, FaPlaystation } from "react-icons/fa";
-import { FiX } from "react-icons/fi";
+import { FiArrowUpRight, FiX } from "react-icons/fi";
 import type { Game, VideoSource } from "./types";
+import { extractYouTubeVideoId, getYouTubeEmbedUrl, getYouTubeWatchUrl } from "../utils/youtube";
 
 type Props = {
   video: VideoSource;
@@ -107,16 +108,51 @@ export default function VideoModal({ video, game, onClose }: Props) {
 
   const renderVideo = () => {
     if (video.type === "youtube") {
+      const rawInput = video.id ?? video.url;
+      const embedUrl = getYouTubeEmbedUrl(rawInput);
+      const watchUrl = getYouTubeWatchUrl(rawInput);
+      if (!embedUrl) return null;
+
       return (
         <div className="video-frame-wrapper">
           <iframe
-            src={`https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&controls=0&modestbranding=1&rel=0&disablekb=1`}
+            src={embedUrl}
             allow="autoplay; encrypted-media; fullscreen"
             allowFullScreen
-            sandbox="allow-scripts allow-same-origin allow-presentation"
+            sandbox="allow-scripts allow-same-origin allow-presentation allow-popups allow-popups-to-escape-sandbox"
             title={game ? `${game.title} trailer` : "Game trailer"}
           />
           <div className="iframe-blocker" />
+          {watchUrl && (
+            <a
+              href={watchUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="video-watch-link"
+              title="Watch on YouTube (opens in new tab)"
+              aria-label={game ? `Watch ${game.title} trailer on YouTube` : "Watch trailer on YouTube"}
+              style={{
+                position: "absolute",
+                bottom: "0.75rem",
+                right: "0.75rem",
+                zIndex: 3,
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.35rem",
+                padding: "0.4rem 0.75rem",
+                borderRadius: "999px",
+                background: "rgba(5, 14, 28, 0.85)",
+                color: "#fff",
+                fontSize: "0.78rem",
+                fontWeight: 600,
+                textDecoration: "none",
+                border: "1px solid rgba(255, 255, 255, 0.25)",
+                backdropFilter: "blur(10px)",
+              }}
+            >
+              <FiArrowUpRight aria-hidden="true" /> Watch on YouTube
+            </a>
+          )}
         </div>
       );
     }
