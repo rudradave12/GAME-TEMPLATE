@@ -23,6 +23,7 @@ export type Game = {
   status: "available" | "unavailable" | "upcoming" ; 
   adult?: boolean;
   image: string;
+  description?: string;
   screenshots?: { src: string; alt: string; thumbSrc?: string }[];
   video?: VideoSource; // ✅ unified video support
 };

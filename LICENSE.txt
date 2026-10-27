@@ -1,48 +1,104 @@
-﻿COMMERCIAL TEMPLATE LICENSE AGREEMENT
-=====================================
+COMMERCIAL SOFTWARE TEMPLATE LICENSE AGREEMENT
+=================================================
 
-Product: GameZone Website Template
-Copyright (c) 2026 GameZone Template Authors. All rights reserved.
+Product: GameZone Commercial Website Template
+Author / Licensor: GameZone Template Authors
+Repository: https://github.com/rudradave12/GAME-TEMPLATE
+Copyright (c) 2026. All rights reserved.
 
-IMPORTANT: PLEASE READ THIS LICENSE AGREEMENT CAREFULLY BEFORE USING,
-MODIFYING, OR DEPLOYING THIS SOFTWARE TEMPLATE.
+IMPORTANT NOTICE: PLEASE READ THIS COMMERCIAL TEMPLATE LICENSE AGREEMENT
+CAREFULLY BEFORE DOWNLOADING, MODIFYING, COMPILING, OR DEPLOYING THIS SOFTWARE.
+BY DOWNLOADING, CLONING, OR USING THIS TEMPLATE, YOU AGREE TO BE BOUND BY THE
+TERMS OF THIS AGREEMENT.
 
-1. GRANT OF LICENSE
--------------------
-Subject to the terms and conditions of this Agreement, the purchaser ("Licensee")
-is granted a non-exclusive, non-transferable, commercial license to:
-  a) Use, customize, adapt, and deploy the template to create production websites,
-     client websites, and web applications for personal or commercial business use.
-  b) Modify and adapt the source code, design assets, and configurations to match
-     brand and project requirements.
-  c) Create an unlimited number of final client websites or business sites using
-     this template under an extended or commercial purchase tier.
+--------------------------------------------------------------------------------
+1. COMMERCIAL BUSINESS MODEL & LICENSING STRUCTURE
+--------------------------------------------------------------------------------
+The Licensor operates on a Master Template distribution model:
 
-2. RESTRICTIONS
-----------------
-Licensee SHALL NOT:
-  a) Resell, redistribute, license, sublicense, rent, lease, lend, share, or upload
-     the original template source code, modified versions of the template source code,
-     or derivative template products to any marketplace, code repository, asset store,
-     theme directory, or public forum as a template, theme, starter kit, or digital asset.
-  b) Make the uncompiled or raw source code publicly accessible in open repositories
-     where third parties can download or duplicate the template free of charge.
-  c) Claim original authorship, copyright, or design trademark of the underlying
-     template design system.
+        ONE MASTER COMMERCIAL TEMPLATE (Licensor Proprietary Source)
+                                   ↓
+        CLIENT A COPY  ───►  CLIENT A INDEPENDENT DEPLOYMENT
+        CLIENT B COPY  ───►  CLIENT B INDEPENDENT DEPLOYMENT
+        CLIENT C COPY  ───►  CLIENT C INDEPENDENT DEPLOYMENT
+        CLIENT D COPY  ───►  CLIENT D INDEPENDENT DEPLOYMENT
 
-3. THIRD-PARTY ASSETS AND OPEN SOURCE
--------------------------------------
-This template utilizes third-party open-source libraries (including React, Remix,
-Vite, and React Icons) and web fonts, which remain the property of their respective
-owners and are governed by their respective open-source licenses (MIT, Apache 2.0,
-OFL, etc.). Nothing in this Agreement restricts or overrides the terms of any
-applicable third-party open-source license.
+The Licensor retains all exclusive rights to market, license, and sell copies of
+the Master Template to multiple independent purchasers ("Licensees").
 
-4. DISCLAIMER OF WARRANTIES
----------------------------
-THE TEMPLATE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN
-CONNECTION WITH THE TEMPLATE OR THE USE OR OTHER DEALINGS IN THE TEMPLATE.
+Each purchased copy grants the Licensee a distinct, non-exclusive, non-transferable,
+perpetual commercial license to create and deploy an independent commercial website.
+
+--------------------------------------------------------------------------------
+2. GRANT OF RIGHTS — WHAT THE BUYER MAY DO
+--------------------------------------------------------------------------------
+Subject to the terms of this Agreement, the Licensee is granted the right to:
+
+  a) DOWNLOAD AND CLONE: Create an independent local copy and private repository
+     of the template for each licensed project.
+  b) CUSTOMIZATION & MODIFICATION: Freely customize, modify, extend, and adapt
+     the source code, styling, theme colors, typography, layout, animations,
+     navigation, pricing tables, café menus, booking forms, and rules.
+  c) BRAND REPLACEMENT: Replace the default branding, logo, favicon, business name,
+     tagline, contact numbers, email addresses, social accounts, and location details
+     with the Licensee's or end-client's authentic business identity.
+  d) ASSET REPLACEMENT: Add, swap, or configure local venue game catalogs, screenshots,
+     posters, and video trailer URLs in accordance with local regulations.
+  e) INDEPENDENT DEPLOYMENT: Build, compile, and deploy the resulting website to any
+     hosting platform (including Cloudflare Pages, Vercel, Netlify, AWS, or custom servers)
+     under the Licensee's or end-client's own custom domain name.
+  f) COMMERCIAL CLIENT USAGE: Use the template to deliver a customized website for a
+     paying client or for the Licensee's own gaming venue, esports lounge, or café.
+
+--------------------------------------------------------------------------------
+3. LICENSE RESTRICTIONS — WHAT THE BUYER MAY NOT DO
+--------------------------------------------------------------------------------
+The Licensee SHALL NOT:
+
+  a) RESALE AS A TEMPLATE: Resell, sub-license, rent, lease, distribute, or bundle
+     the template (in source, compiled, or modified format) as a website template,
+     theme, starter kit, UI component library, or digital product on any marketplace,
+     code sharing platform, theme directory, or public forum.
+  b) PUBLIC CODE RE-HOSTING: Publish or push the template's source code to public,
+     open-source, or unauthenticated repositories where it can be downloaded or
+     cloned by third parties without a valid purchased license.
+  c) CLAIM OF MASTER OWNERSHIP: Claim ownership of the original master codebase,
+     design system architecture, or template creation business. Ownership of the
+     underlying template software remains exclusively with the Licensor.
+  d) RE-PACKAGING: Extract, scrape, or isolate the design tokens, components, or
+     styles for distribution as an independent commercial UI library.
+
+--------------------------------------------------------------------------------
+4. THIRD-PARTY TRADEMARKS & ASSET RESPONSIBILITY
+--------------------------------------------------------------------------------
+  a) The Licensor makes NO claim of ownership or copyright over third-party video
+     game titles, publishers, trademarks, registered logos, or franchise names.
+     Any demonstration titles or references included in the template are for
+     illustrative, functional showcase purposes only.
+  b) The Licensee is solely responsible for ensuring that all video game titles,
+     images, box art, logos, trailers, and media assets deployed to their live
+     production websites comply with applicable copyright laws, trademark laws,
+     and publisher commercial display guidelines in their governing jurisdiction.
+  c) YouTube trailers and external media embeds are streamed directly from
+     third-party hosts (e.g. YouTube) via official embed mechanisms. No video
+     files are re-hosted, downloaded, or distributed with this template.
+
+--------------------------------------------------------------------------------
+5. OPEN-SOURCE LIBRARIES & DEPENDENCIES
+--------------------------------------------------------------------------------
+This template is built with open-source software packages including React, Remix,
+Vite, and React Icons. All bundled open-source dependencies remain subject to their
+original open-source licenses (MIT, Apache 2.0, SIL Open Font License, etc.).
+Nothing in this commercial agreement restricts rights granted under those licenses.
+
+--------------------------------------------------------------------------------
+6. DISCLAIMER OF WARRANTIES & LIMITATION OF LIABILITY
+--------------------------------------------------------------------------------
+THE TEMPLATE IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.
+
+IN NO EVENT SHALL THE LICENSOR OR AUTHORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING LOSS OF PROFITS,
+DATA, BUSINESS INTERRUPTION, OR THIRD-PARTY CLAIMS) ARISING OUT OF OR IN CONNECTION
+WITH THE USE, MODIFICATION, OR DEPLOYMENT OF THIS SOFTWARE TEMPLATE.

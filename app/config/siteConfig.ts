@@ -212,7 +212,7 @@ export const siteConfig: SiteConfig = {
       "Premier gaming lounge and esports arena offering PlayStation 5, high-refresh 240Hz PC battle stations, low-latency fiber LAN, and premium refreshments.",
     legalName: "GameZone Arena LLC",
     foundedYear: 2024,
-    websiteUrl: "https://gamezone-arena.pages.dev",
+    websiteUrl: "https://gamezone-template-demo.pages.dev",
     logoUrl: "/icons/logo.svg",
     faviconUrl: "/icons/logo.svg",
   },

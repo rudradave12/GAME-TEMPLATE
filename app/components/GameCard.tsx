@@ -10,9 +10,10 @@ type Props = {
 
 export default function GameCard({ game, rank }: Props) {
   const slug = gameSlug(game.title);
-  const cardImage = `/images/cards/${slug}.webp`;
-  const cardImageSet = `/images/cards/320/${slug}.webp 320w, ${cardImage} 640w`;
-  const cardAvifSet = `/images/cards/320/${slug}.avif 320w, /images/cards/520/${slug}.avif 520w, /images/cards/${slug}.avif 640w`;
+  const hasCustomImage = Boolean(game.image);
+  const cardImage = game.image || `/images/cards/${slug}.webp`;
+  const cardImageSet = hasCustomImage ? undefined : `/images/cards/320/${slug}.webp 320w, ${cardImage} 640w`;
+  const cardAvifSet = hasCustomImage ? undefined : `/images/cards/320/${slug}.avif 320w, /images/cards/520/${slug}.avif 520w, /images/cards/${slug}.avif 640w`;
   const cardImageSizes = rank
     ? "(max-width: 760px) 70vw, (max-width: 1200px) 24vw, 25vw"
     : "(max-width: 760px) 44vw, (max-width: 1200px) 24vw, 20vw";
@@ -27,15 +28,17 @@ export default function GameCard({ game, rank }: Props) {
         {rank && <span className="game-card__rank" aria-hidden="true">{rank}</span>}
         <div className="game-card__media">
           <picture>
-            <source
-              type="image/avif"
-              srcSet={cardAvifSet}
-              sizes={cardImageSizes}
-            />
+            {cardAvifSet && (
+              <source
+                type="image/avif"
+                srcSet={cardAvifSet}
+                sizes={cardImageSizes}
+              />
+            )}
             <img
               src={cardImage}
               srcSet={cardImageSet}
-              sizes={cardImageSizes}
+              sizes={cardImageSet ? cardImageSizes : undefined}
               alt=""
               loading={rank === 1 ? "eager" : "lazy"}
               decoding={rank === 1 ? "sync" : "async"}

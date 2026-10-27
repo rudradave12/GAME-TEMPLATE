@@ -78,17 +78,11 @@ const preHydrationScript = `(() => {
 
   if (path === "/" || path === "/index.html") {
     const isPortrait = window.matchMedia("(max-width: 1100px) and (orientation: portrait)").matches;
-    addImageHint(isPortrait ? "/images/valorant-mobile-portraite.jpg" : "/images/hero/valorant.jpg");
+    addImageHint(isPortrait ? "/images/hero/battle-arena-mobile.jpg" : "/images/hero/battle-arena-desktop.jpg");
   }
 
   if (path === "/games") {
     addStyleHint("${gameCatalogStyles}");
-    addImageHint(
-      "/images/cards/gta-online.avif",
-      "/images/cards/320/gta-online.avif 320w, /images/cards/520/gta-online.avif 520w, /images/cards/gta-online.avif 640w",
-      "(max-width: 760px) 70vw, (max-width: 1200px) 24vw, 25vw",
-      "image/avif"
-    );
   }
 
   const gameArt = ${serializedGameArtworkBySlug};

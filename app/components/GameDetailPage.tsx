@@ -321,7 +321,7 @@ function getRelevantGuidelines(game: Game) {
 }
 
 function GamePolicy({ game }: Props) {
-  const title = game.id === 2 || game.id === 41;
+  const isSpecial = game.adult || game.status === "upcoming";
   const relevant = getRelevantGuidelines(game);
   return (
     <section className="game-policy" aria-labelledby="game-policy-title">
@@ -341,11 +341,14 @@ function GamePolicy({ game }: Props) {
             </article>
           );
         })}
-        {title && (
+        {isSpecial && (
           <article className="game-policy__special">
             <FiAlertTriangle aria-hidden="true" />
-            <div><h3>{game.id === 41 ? "GTA VI · coming soon" : "GTA Online content policy"}</h3><p>{game.id === 41 ? "Final session guidance will be confirmed before this title becomes available." : "Content warning · restricted locations"}</p></div>
-            <p>{game.id === 41 ? "Our arena GTA title content rules will apply at launch: adult-themed environments and bar-style locations are restricted. Violations may end the session without refund." : gtaOnlinePolicyText}</p>
+            <div>
+              <h3>{game.status === "upcoming" ? `${game.title} · Coming soon` : "Arena Fair Play & Content Policy"}</h3>
+              <p>{game.status === "upcoming" ? "Launch session guidance" : "Content warning & community rules"}</p>
+            </div>
+            <p>{game.status === "upcoming" ? `This title is scheduled to arrive at ${siteConfig.brand.name}. Session bookings and station access will open upon launch.` : gtaOnlinePolicyText}</p>
           </article>
         )}
       </div>
@@ -373,7 +376,7 @@ function GameScreenshotGallery({ game, selected, onSelect }: Props & {
   const screenshots: GalleryItem[] = [
     {
       src: game.image,
-      thumbSrc: keyArtThumbnails[game.id],
+      thumbSrc: keyArtThumbnails[game.id] || game.image,
       alt: `${game.title} key artwork`,
       label: "Key art",
     },
@@ -470,7 +473,7 @@ function GameScreenshotGallery({ game, selected, onSelect }: Props & {
 
 export default function GameDetailPage({ game }: Props) {
   const [selectedArtwork, setSelectedArtwork] = useState(game.image);
-  const description = editorialDescriptions[game.id] ?? game.subtitle;
+  const description = (game as { description?: string }).description ?? editorialDescriptions[game.id] ?? game.subtitle;
   const isForzaDefaultArtwork = game.id === 45 && selectedArtwork === game.image;
   const isDefaultArtwork = selectedArtwork === game.image;
   const responsiveArtwork = getResponsiveArtwork(game.image);

@@ -1,27 +1,27 @@
-# 🎮 GameZone Website Template
+# 🎮 GameZone Commercial Website Template
 
 A modern, high-performance commercial website template built for **gaming zones, esports arenas, gaming cafés, VR arcades, and console lounges**.
 
-Engineered with **Remix (Single Page Application architecture) and Vite**, styled with a **custom high-performance CSS design system**, and structured with a **single centralized configuration file** for rapid client customization.
+Engineered with **Remix (Single Page Application architecture) and Vite**, styled with a **custom high-performance CSS design system**, and structured with a **single centralized configuration file** for rapid client customization and repeated commercial deployment.
 
 ---
 
 ## 🌟 Product Overview
 
-The **GameZone Website Template** is a complete, production-ready website solution designed to give gaming venues a world-class digital presence. It combines cinematic visuals, PlayStation-grade typography, interactive gaming library filters, dynamic pricing displays, a cafe & snack bar menu, and one-click booking triggers.
+The **GameZone Website Template** is a complete, production-ready commercial website solution designed to give gaming venues a world-class digital presence. It combines cinematic visuals, PlayStation-grade typography, interactive gaming library filters, dynamic pricing displays, a cafe & snack bar menu, and one-click booking triggers.
 
-Whether you operate a competitive PC esports center, a console gaming lounge with PS5 and PC stations, a racing simulation studio, or a casual gaming café, this template allows you to launch in minutes simply by editing one configuration file.
+Whether you operate a competitive PC esports center, a console gaming lounge with PS5 and PC stations, a racing simulation studio, or a casual gaming café, this template allows you to launch a customized, brand-aligned website in minutes simply by editing one configuration file.
 
 ---
 
 ## 🚀 Key Features
 
-- **⚡ Centralized Configuration (`app/config/siteConfig.ts`)**:
+- **⚡ Centralized Client Configuration (`app/config/siteConfig.ts`)**:
   Customize brand name, logo, taglines, contact details, social links, operating hours, hero slides, pricing plans, cafe menu, FAQs, and game rules in one clean TypeScript file.
 - **🎨 Cinematic Gaming Aesthetics**:
   Sleek dark theme with light-mode toggle, custom glow accents, glass-effect modals, and micro-interactions.
 - **🕹️ Rich Interactive Game Library**:
-  Filterable game catalogue with category tags, platform badges, search, game detail pages, trailers, screenshots, and guidelines.
+  Filterable game catalogue with category tags, platform badges, live search, game detail pages, trailers, screenshot galleries, and arena guidelines.
 - **📺 Seamless YouTube Trailer Playback**:
   Native fullscreen trailer player with custom HUD controls, supporting raw IDs and all YouTube URL formats (`watch?v=`, `youtu.be/`, `embed/`, `shorts/`), plus direct safe external YouTube links (`target="_blank" rel="noopener noreferrer"`).
 - **💳 Tiered Pricing Cards**:
@@ -41,12 +41,54 @@ Whether you operate a competitive PC esports center, a console gaming lounge wit
 
 ---
 
+## 💼 Commercial Multi-Client Licensing & Workflow
+
+This codebase is licensed as a **commercial master template**. You may sell the final website to multiple clients or use it repeatedly across multiple client projects.
+
+### The Multi-Client Deployment Model
+
+```
+                    ONE MASTER TEMPLATE REPOSITORY
+               (https://github.com/rudradave12/GAME-TEMPLATE)
+                                     │
+      ┌──────────────────────────────┼──────────────────────────────┐
+      ▼                              ▼                              ▼
+CLIENT A PROJECT               CLIENT B PROJECT               CLIENT C PROJECT
+• Download/Clone Copy          • Download/Clone Copy          • Download/Clone Copy
+• Private Client GitHub        • Private Client GitHub        • Private Client GitHub
+• Client A siteConfig.ts       • Client B siteConfig.ts       • Client C siteConfig.ts
+• Client A Cloudflare Pages    • Client B Cloudflare Pages    • Client C Cloudflare Pages
+• clientA-gaming.com           • clientB-arena.com            • clientC-lounge.com
+```
+
+### Recommended Workflow for Each Client
+
+1. **Clone a fresh copy** from the master template repository:
+   ```bash
+   git clone https://github.com/rudradave12/GAME-TEMPLATE.git my-client-gaming-website
+   cd my-client-gaming-website
+   ```
+2. **Initialize a private repository** for the client:
+   ```bash
+   git remote remove origin
+   git remote add origin https://github.com/your-account/my-client-gaming-website.git
+   git push -u origin main
+   ```
+3. **Customize Client Branding & Config** in `app/config/siteConfig.ts` (see guide below).
+4. **Deploy to Client's Cloudflare Account** (or your agency Cloudflare account).
+5. **Connect Client's Custom Domain**.
+
+> **Note on Client Independence:**  
+> Each client website operates 100% independently. There is no shared database, no shared state, no shared third-party API keys, and no shared local storage between client deployments. One client's updates will never affect another client.
+
+---
+
 ## 🛠️ Technology Stack
 
 - **Framework**: [Remix](https://remix.run/) v2.17+ (SPA Mode, `ssr: false`)
 - **Bundler & Dev Server**: [Vite](https://vitejs.dev/) v5.4+
 - **UI Library**: React 18, React DOM
-- **Icons**: [React Icons](https://react-icons.github.io/react-icons/) (Feather, Remix Icons, Lucide, Heroicons, FontAwesome)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/) (Feather, FontAwesome, Remix Icons)
 - **Styling**: Vanilla CSS Design System with CSS Custom Properties and zero third-party utility bloat
 - **Fonts**: Self-hosted Google Fonts via `@fontsource-variable/outfit`
 - **Deployment Target**: Cloudflare Pages / Static Web Hosts
@@ -55,160 +97,131 @@ Whether you operate a competitive PC esports center, a console gaming lounge wit
 
 ## 📋 Requirements
 
-- **Node.js**: `>= 18.0.0` (v20.x or v22.x recommended)
-- **Package Manager**: `npm` (comes with Node.js), `pnpm`, or `yarn`
+- **Node.js**: `>= 18.0.0` (v20.x recommended)
+- **Package Manager**: `npm` (bundled with Node.js)
 
 ---
 
-## ⚡ Quick Start & Installation
-
-Clone or extract the template files to your workspace, then run:
+## ⚡ Quick Start & Local Development
 
 ```bash
 # 1. Install dependencies
 npm install
 
-# 2. Start the local development server (with HMR)
+# 2. Start local development server (with Hot Module Replacement)
 npm run dev
 
 # 3. Open in your browser
-# Server will be running at http://localhost:5173
+# Server runs at http://localhost:5173
 ```
 
-To create a production-ready build:
+To create a production build:
 
 ```bash
 # Compile client assets and generate security hashes
 npm run build
 ```
 
-The production bundle will be generated in `build/client/`.
+The production-ready bundle is output to `build/client/`.
 
 ---
 
 ## 🎨 Complete Customization Guide
 
-Everything is engineered so you **do not** have to search through dozens of nested JSX components to change basic client details.
+All essential client information is modified through clean, typed configuration files without editing component architecture.
 
 ### 1. Central Configuration (`app/config/siteConfig.ts`)
 
-Open `app/config/siteConfig.ts`. Here you will find:
+Open `app/config/siteConfig.ts` to customize:
 
-```typescript
-export const siteConfig = {
-  brand: {
-    name: "GAMEZONE ARENA",
-    shortName: "GAMEZONE",
-    tagline: "Your Ultimate Gaming Destination",
-    description: "Experience elite PC and console gaming...",
-    foundedYear: 2026,
-    websiteUrl: "https://gamezone-example.com",
-    logoUrl: "/icons/logo.svg",
-    faviconUrl: "/icons/icon-192.png",
-  },
-  contact: {
-    phoneDisplay: "+1 (555) 234-5678",
-    phoneRaw: "+15552345678",
-    whatsappDisplay: "+1 (555) 234-5678",
-    whatsappUrl: "https://wa.me/15552345678?text=...",
-    email: "arena@gamezone-example.com",
-    fullAddress: "100 Esports Way, Suite 400, Metro City, 10001",
-    directionsUrl: "https://maps.google.com/?q=...",
-  },
-  // Operating hours, pricing plans, cafe menu, FAQs, and guidelines...
-};
-```
+- **Brand Details**: Business name, short name, taglines, description, logo URL, favicon URL.
+- **Contact Info**: Phone number, WhatsApp number, email address, physical address, Google Maps link, GPS coordinates.
+- **Operating Hours**: Display hours, weekday schedule, weekend schedule, open/close times.
+- **Social Media**: Discord, Instagram, X/Twitter, YouTube, Twitch, Facebook links.
+- **Theme Settings**: Default theme (`dark` | `light`), accent colors, storage key.
+- **Pricing & Rates**: Plan titles, badges, rate rows, currency symbol (`$`, `€`, `£`, `₹`).
+- **Café & Snack Menu**: Item names, categories, prices, descriptions, and badges.
+- **Booking Rules**: Walk-in policy, reservation deposit guidelines, ID requirements.
+- **Venue Guidelines & Policies**: Code of conduct, age limits, session limits.
+- **FAQs**: Questions and answers categorized by booking, hardware, and events.
 
-### 2. Changing Pricing & Plans
-In `app/config/siteConfig.ts`, modify `siteConfig.pricing`:
-```typescript
-{
-  title: "Console Lounge",
-  badge: "Best for Casuals",
-  rows: [
-    { label: "1 Hour Session", rate: "$8 / hr" },
-    { label: "3 Hour Pass", rate: "$20" },
-  ],
-}
-```
+### 2. Customizing Hero Slides (`app/data/heroslides.ts`)
 
-### 3. Updating the Cafe & Snacks Menu
-In `app/config/siteConfig.ts`, modify `siteConfig.cafeMenu`:
-```typescript
-{
-  name: "Loaded Gamer Nachos",
-  category: "Hot Bites & Pizza",
-  price: "$7.50",
-  description: "Crispy tortilla chips topped with melted cheese, jalapeños...",
-  tag: "Popular",
-}
-```
+Modify the 5 homepage hero slides:
+- `title`: Slide headline (e.g. `BATTLE ARENA`, `RACING ZONE`)
+- `tagline`: Subheading / description
+- `category`: Genre badge
+- `imageDesktop`: 16:9 widescreen image path (`/images/hero/...`)
+- `imageMobilePortrait`: 9:16 mobile portrait image path (`/images/hero/...`)
+- `btn1` / `btn2`: Action button text
 
-### 4. Updating Games Catalog
-Games are stored in `app/data/games.ts`. You can add, edit, or remove games:
+### 3. Customizing the Game Catalog (`app/data/games.ts`)
+
+Add, edit, or remove games in `app/data/games.ts`:
 ```typescript
 {
   id: 1,
-  title: "CALL OF DUTY BLACK OPS 7",
-  subtitle: "Tactical First-Person Shooter",
+  title: "BATTLE ARENA",
+  subtitle: "5v5 Tactical Competitive Shooter",
   category: "SHOOTING",
   playerType: "MULTIPLAYER",
-  platforms: ["PS5"],
+  platforms: ["PC", "PS5"],
   status: "available",
-  image: "/images/cod-blackops-7-optimized.webp",
+  image: "/images/hero/battle-arena-desktop.jpg",
+  description: "Coordinate your squad, master ability timing, and secure the objective.",
+  screenshots: [
+    { src: "/images/hero/battle-arena-desktop.jpg", alt: "Battle Arena tactical gameplay" },
+  ],
   video: {
     type: "youtube",
-    id: "ynivqJZJOH4", // Or full URL: https://www.youtube.com/watch?v=ynivqJZJOH4
+    id: "dQw4w9WgXcQ", // 11-char ID or full YouTube URL (watch, embed, youtu.be, shorts)
   },
 }
 ```
 
-### 5. Replacing Images & Logos
-- **Logo**: Replace `public/icons/logo.svg` or change `brand.logoUrl` in `siteConfig.ts`.
-- **Game Posters & Thumbnails**: Store new game covers in `public/images/`.
-- **Hero Backgrounds**: Store hero banners in `public/images/hero/`.
+### 4. Replacing Brand Assets
 
-### 6. Changing Brand Accent Colors
-Open `app/styles/site.css` and adjust the CSS variables:
-```css
-:root {
-  --blue: #0066bd;
-  --blue-dark: #004f91;
-  --canvas: #071321;
-}
-```
+- **Logo**: Replace `public/icons/logo.svg` or change `brand.logoUrl` in `siteConfig.ts`.
+- **Favicon**: Update `brand.faviconUrl` in `siteConfig.ts`.
+- **Hero Artwork**: Add images to `public/images/hero/` and update `heroslides.ts`.
 
 ---
 
-## ☁️ Deployment Guide
+## ☁️ Cloudflare Pages Deployment Guide
 
-### Deploying to Cloudflare Pages (Recommended)
+The template is optimized for **Cloudflare Pages** (Single Page Application mode with edge CDN caching).
 
-1. **Connect your GitHub repository** to Cloudflare Pages.
-2. Configure your build settings:
-   - **Framework Preset**: None or Vite
+### Step-by-Step Deployment:
+
+1. **Log in to Cloudflare**:
+   Navigate to the [Cloudflare Dashboard](https://dash.cloudflare.com/) and go to **Compute (Workers) > Workers & Pages** (or **Pages**).
+2. **Create an Application**:
+   Click **Create application** > **Pages** > **Connect to Git**.
+3. **Select Your Repository**:
+   Authorize access to your GitHub account and choose the client repository (e.g. `my-client-gaming-website`).
+4. **Configure Build Settings**:
+   - **Project Name**: e.g. `gamezone-template-demo` (or client business name)
+   - **Production Branch**: `main`
+   - **Framework Preset**: `None` (or `Vite`)
    - **Build Command**: `npm run build`
    - **Build Output Directory**: `build/client`
-   - **Node.js Version**: Set Environment Variable `NODE_VERSION` to `20`
-3. Click **Save and Deploy**. Cloudflare Pages will automatically build and distribute the site to edge data centers worldwide.
-
-### Deploying to Vercel, Netlify, or Any Static Host
-
-Since the template outputs pure static assets to `build/client/`:
-- **Build command**: `npm run build`
-- **Publish directory**: `build/client`
-
-A `_headers` file is automatically generated in `build/client/` providing hardened security headers, cache policies, and Content Security Policies.
+5. **Environment Variables**:
+   Under **Environment variables (advanced)**, add:
+   - `NODE_VERSION`: `20`
+6. **Deploy**:
+   Click **Save and Deploy**. Cloudflare will run `npm run build` and publish your site globally across 300+ edge data centers.
+7. **Custom Domain**:
+   Once deployed, navigate to **Custom domains** in your Cloudflare Pages project and connect your client's custom domain (e.g., `gamingarena.com`). DNS and SSL certificates are provisioned automatically.
 
 ---
 
-## 📁 Folder Structure
+## 📁 Project Directory Structure
 
 ```
 gamezone-website-template/
 ├── app/
 │   ├── config/
-│   │   └── siteConfig.ts          # ⭐ CENTRAL CONFIGURATION (Edit brand, contact, pricing, cafe, FAQs)
+│   │   └── siteConfig.ts          # ⭐ CENTRAL CONFIGURATION (Brand, contact, pricing, cafe, FAQs)
 │   ├── components/                # Modular UI components
 │   │   ├── Navbar.tsx             # Responsive header navigation & theme switcher
 │   │   ├── CinematicHero.tsx      # Full-width cinematic hero slideshow
@@ -219,15 +232,19 @@ gamezone-website-template/
 │   │   ├── GameLibraryHome.tsx    # Homepage featured games showcase
 │   │   ├── GameLibrarypage.tsx    # Filterable catalog page
 │   │   ├── GameDetailPage.tsx     # Game profile with trailer player and specs
+│   │   ├── GameCard.tsx           # Reusable game card with responsive picture
 │   │   ├── Experience.tsx         # Hardware specs and setup showcase
 │   │   ├── Booking.tsx            # Booking rules, rates, and WhatsApp CTA
 │   │   ├── FAQ.tsx                # Interactive accordion FAQ
 │   │   ├── GameGuidelines.tsx     # Venue policies and gaming etiquette
+│   │   ├── GTAOnlinePolicy.tsx    # Arena fair play & online policy component
+│   │   ├── VideoModal.tsx         # Fullscreen YouTube trailer modal
 │   │   └── Footer.tsx             # Location details, hours, and legal links
 │   ├── data/
 │   │   ├── games.ts               # Complete game catalog database
-│   │   ├── heroslides.ts          # Hero carousel data
-│   │   └── game-artwork.ts        # Responsive artwork mappings
+│   │   ├── heroslides.ts          # Hero carousel data (5 generic gaming slides)
+│   │   ├── game-artwork.ts        # Responsive artwork mappings
+│   │   └── top-ten-game-highlights.ts # Game spotlight data
 │   ├── routes/                    # Remix file-based route controllers
 │   │   ├── _index.tsx             # Main landing page
 │   │   ├── games._index.tsx       # Dedicated game catalog route
@@ -246,6 +263,12 @@ gamezone-website-template/
 │   │   └── youtube.ts             # YouTube URL extraction, embed, and watch utilities
 │   └── root.tsx                   # Master HTML document & SEO schemas
 ├── public/                        # Static public assets (images, icons, manifest)
+│   ├── icons/
+│   │   └── logo.svg               # Original GameZone cyber shield logo
+│   ├── images/
+│   │   └── hero/                  # High-res generic hero slide wallpapers
+│   ├── _headers                   # Cloudflare security headers & CSP config
+│   └── _redirects                 # SPA routing fallback for Cloudflare Pages
 ├── scripts/
 │   └── write-csp-hashes.mjs       # Automated build script for CSP hashing
 ├── .env.example                   # Example environment configuration
@@ -257,20 +280,9 @@ gamezone-website-template/
 
 ---
 
-## 🔧 Troubleshooting
+## 📄 License & Commercial Terms
 
-### 1. `npm install` throws peer dependency warnings
-- Run `npm install --legacy-peer-deps` if using older or customized npm versions.
+This software template is protected under the **Commercial Software Template License Agreement**. See [LICENSE.txt](./LICENSE.txt) for the complete legal text.
 
-### 2. Changes to `siteConfig.ts` are not showing up immediately
-- Vite includes Hot Module Replacement (HMR). If a browser tab holds older cached state, perform a hard refresh (`Ctrl + Shift + R` or `Cmd + Shift + R`).
-- For theme changes, clear `localStorage` via browser developer tools if you changed default theme values.
-
-### 3. Images not loading
-- Ensure all custom images are placed inside the `public/` folder and referenced with absolute paths (e.g. `/images/my-image.webp`).
-
----
-
-## 📄 License
-
-This template is licensed under the **Commercial Template License Agreement**. See [LICENSE.txt](./LICENSE.txt) for complete details. You may use this template to build client or commercial websites, but redistribution or resale of the original source code as a competing template is strictly prohibited.
+- **You MAY**: Use, customize, re-brand, and deploy this template to build and launch production websites for yourself or your paying clients.
+- **You MAY NOT**: Resell, redistribute, lease, or sub-license the raw or modified template source code as a competing website template, theme, or digital download product.

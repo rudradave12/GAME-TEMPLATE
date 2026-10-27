@@ -35,71 +35,71 @@ export type HeroSlide = {
 export const HERO_SLIDES: HeroSlide[] = [
   {
     id: 1,
-    title: "VALORANT",
-    tagline: "5V5 CHARACTER-BASED TACTICAL FIREFIGHT",
+    title: "BATTLE ARENA",
+    tagline: "5V5 TACTICAL COMPETITIVE FIREFIGHT",
     category: "TACTICAL FPS",
 
-    imageDesktop:         "/images/hero/valorant.jpg",
-    imageMobilePortrait:  "/images/valorant-mobile-portraite.jpg",
-    imageMobileLandscape: "/images/hero/valorant.jpg",
+    imageDesktop:         "/images/hero/battle-arena-desktop.jpg",
+    imageMobilePortrait:  "/images/hero/battle-arena-mobile.jpg",
+    imageMobileLandscape: "/images/hero/battle-arena-desktop.jpg",
 
-    btn1: "BEST GAME",
+    btn1: "EXPLORE ARENA",
     btn2: "FPS ACTION",
   },
 
   {
     id: 2,
-    title: "ASPHALT LEGENDS UNITE",
-    tagline: "LEGENDS CHANGE THE GAME",
-    category: "RACING",
+    title: "RACING ZONE",
+    tagline: "HIGH SPEED MULTIPLAYER DRIFT CIRCUIT",
+    category: "ARCADE RACING",
 
-    imageDesktop:         "/images/hero/asphalt.jpg",
-    imageMobilePortrait:  "/images/hero/asphalt-portrait.jpg",
-    imageMobileLandscape: "/images/hero/asphalt.jpg",
+    imageDesktop:         "/images/hero/racing-zone-desktop.jpg",
+    imageMobilePortrait:  "/images/hero/racing-zone-mobile.jpg",
+    imageMobileLandscape: "/images/hero/racing-zone-desktop.jpg",
 
-    btn1: "BEST GAME",
+    btn1: "VIEW TRACKS",
     btn2: "ARCADE RACING",
   },
 
   {
     id: 3,
-    title: "CALL OF DUTY: MODERN WARFARE III",
-    tagline: "THE FIGHT IS CLOSER THAN EVER",
-    category: "FPS ACTION",
+    title: "ACTION ZONE",
+    tagline: "SQUAD-BASED SPECIAL COMBAT MISSIONS",
+    category: "CO-OP ACTION",
 
-    imageDesktop:         "/images/hero/modern-warfare-iii-desktop.webp",
-    imageMobilePortrait:  "/images/hero/modern-warfare-iii-mobile.webp",
-    imageMobileLandscape: "/images/hero/modern-warfare-iii-desktop.webp",
+    imageDesktop:         "/images/hero/action-zone-desktop.jpg",
+    imageMobilePortrait:  "/images/hero/action-zone-mobile.jpg",
+    imageMobileLandscape: "/images/hero/action-zone-desktop.jpg",
 
-    btn1: "BEST GAME",
+    btn1: "JOIN SQUAD",
     btn2: "MULTIPLAYER",
   },
 
   {
     id: 4,
-    title: "CALL OF DUTY BLACK OPS 7",
-    tagline: "A NEW ERA OF COVERT OPERATIONS",
-    category: "FPS ACTION",
- 
-    imageDesktop:         "/images/hero/cod-blackops-7.jpg",
-    imageMobilePortrait:  "/images/hero/cod-blackops-7-portrait.jpg",
-    imageMobileLandscape: "/images/hero/cod-blackops-7.jpg",
+    title: "GAME NIGHT",
+    tagline: "COMMUNITY ESPORTS & WEEKEND TOURNAMENTS",
+    category: "ESPORTS ARENA",
 
-    btn1: "BEST GAME",
-    btn2: "FPS ACTION",
+    imageDesktop:         "/images/hero/game-night-desktop.jpg",
+    imageMobilePortrait:  "/images/hero/game-night-mobile.jpg",
+    imageMobileLandscape: "/images/hero/game-night-desktop.jpg",
+
+    btn1: "VIEW EVENTS",
+    btn2: "COMMUNITY",
   },
 
   {
     id: 5,
-    title: "GRAND THEFT AUTO VI",
-    tagline: "A NEW ERA AWAITS IN LEONIDA",
-    category: "OPEN WORLD",
+    title: "SPORTS ARENA",
+    tagline: "NEXT-GEN TOURNAMENTS & CHAMPIONSHIP LEAGUES",
+    category: "SPORTS SIM",
 
-    imageDesktop:         "/images/gta-vi-cover.webp",
-    imageMobilePortrait:  "/images/hero/gta-vi-mobile.webp",
-    imageMobileLandscape: "/images/gta-vi-cover.webp",
+    imageDesktop:         "/images/hero/sports-arena-desktop.jpg",
+    imageMobilePortrait:  "/images/hero/sports-arena-mobile.jpg",
+    imageMobileLandscape: "/images/hero/sports-arena-desktop.jpg",
 
-    btn1: "COMING SOON",
-    btn2: "OPEN WORLD",
+    btn1: "BOOK CONSOLE",
+    btn2: "SPORTS LOUNGE",
   },
 ];

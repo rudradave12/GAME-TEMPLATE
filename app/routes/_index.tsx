@@ -87,13 +87,13 @@ export const links: LinksFunction = () => [
   {
     rel: "preload",
     as: "image",
-    href: "/images/hero/valorant.jpg",
+    href: "/images/hero/battle-arena-desktop.jpg",
     media: "(min-width: 1101px)",
   },
   {
     rel: "preload",
     as: "image",
-    href: "/images/valorant-mobile-portraite.jpg",
+    href: "/images/hero/battle-arena-mobile.jpg",
     media: "(max-width: 1100px)",
   },
 ];
