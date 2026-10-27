@@ -39,7 +39,7 @@ export default function GameCard({ game, rank }: Props) {
               alt=""
               loading={rank === 1 ? "eager" : "lazy"}
               decoding={rank === 1 ? "sync" : "async"}
-              fetchPriority={rank === 1 ? "high" : "auto"}
+              {...({ fetchpriority: rank === 1 ? "high" : "auto" } as Record<string, string>)}
               draggable={false}
             />
           </picture>

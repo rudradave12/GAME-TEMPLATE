@@ -275,6 +275,8 @@ export default function GameLibraryPage() {
                 <FiSearch aria-hidden="true" />
                 <span className="sr-only">Search games</span>
                 <input
+                  id="game-search"
+                  name="game-search"
                   type="search"
                   value={search}
                   onChange={(event) => setSearch(event.target.value)}
